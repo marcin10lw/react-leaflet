@@ -1,8 +1,8 @@
 import { Marker, Popup } from 'react-leaflet';
 
-import { defaultIcon } from './icons';
-import { CitiesCollection } from './types';
-import { getLatLang } from './utils/getLatLangExpression';
+import { defaultIcon } from '../icons';
+import { CitiesCollection } from '../types';
+import { getLatLang } from '../utils/getLatLangExpression';
 
 interface CitiesMarkerLayerProps {
   data: CitiesCollection;

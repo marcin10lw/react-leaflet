@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer } from 'react-leaflet';
 
-import { CitiesMarkerLayer } from './CitiesMarkerLayer';
+import { CitiesMarkerLayer } from './layers/CitiesMarkerLayer';
 import { cities } from './data/cities';
 
 export const Map = () => {
