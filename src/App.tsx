@@ -1,5 +1,7 @@
+import { Map } from './Map';
+
 function App() {
-  return <>Hello</>;
+  return <Map />;
 }
 
 export default App;
