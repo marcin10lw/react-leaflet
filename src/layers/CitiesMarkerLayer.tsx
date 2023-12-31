@@ -12,7 +12,16 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
     const { properties, geometry } = city;
 
     return (
-      <Marker key={i} icon={defaultIcon} position={getLatLang(geometry.coordinates)}>
+      <Marker
+        eventHandlers={{
+          click: (e) => {
+            console.log(e);
+          },
+        }}
+        key={i}
+        icon={defaultIcon}
+        position={getLatLang(geometry.coordinates)}
+      >
         <Popup>{properties.name}</Popup>
       </Marker>
     );

@@ -1,7 +1,9 @@
 import { MapContainer, TileLayer } from 'react-leaflet';
 
-import { CitiesMarkerLayer } from './layers/CitiesMarkerLayer';
 import { cities } from './data/cities';
+import { highestPoints } from './data/highestPoints';
+import { CitiesMarkerLayer } from './layers/CitiesMarkerLayer';
+import { HighestPointsLayer } from './layers/HighestPointsLayer';
 
 export const Map = () => {
   return (
@@ -11,6 +13,7 @@ export const Map = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <CitiesMarkerLayer data={cities} />
+      <HighestPointsLayer data={highestPoints} />
     </MapContainer>
   );
 };
