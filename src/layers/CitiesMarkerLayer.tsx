@@ -41,7 +41,7 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
         icon={isSameSelectedCity ? selectedIcon : defaultIcon}
         position={getLatLang(city.geometry.coordinates)}
       >
-        <CityPopup city={city} />
+        <CityPopup city={city} isSameSelectedCity={isSameSelectedCity} />
       </Marker>
     );
   });
