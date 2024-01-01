@@ -5,8 +5,7 @@ import { CloseOutlined, FilterOutlined } from '@ant-design/icons';
 import { Button, Flex, InputNumber } from 'antd';
 import { INITIAL_RADIUS_FILTER } from 'src/constants';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
-
-import { City } from '../../types';
+import { City } from 'src/types';
 
 interface CityPopupProps {
   city: City;
