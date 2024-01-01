@@ -29,12 +29,12 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
     return true;
   });
 
-  return filteredCities.map((city, i) => {
+  return filteredCities.map((city) => {
     const isSameSelectedCity = radiusFilter?.cityFeature === city;
 
     return (
       <Marker
-        key={city.properties.name + i}
+        key={city.properties.name}
         eventHandlers={{
           click: () => {},
         }}

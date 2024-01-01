@@ -15,21 +15,19 @@ export const HighestPointsLayer = ({ data: mountains }: HighestPointsLayerProps)
     const { properties, geometry } = mountain;
 
     return (
-      <>
-        <Marker
-          eventHandlers={{
-            click: (e) => {
-              map.flyTo(e.latlng, 3, { animate: true, duration: 1, easeLinearity: 0.5 });
-            },
-          }}
-          key={properties.name}
-          icon={mountainIcon}
-          position={getLatLang(geometry.coordinates)}
-          zIndexOffset={22}
-        >
-          <Tooltip>{properties.name}</Tooltip>
-        </Marker>
-      </>
+      <Marker
+        eventHandlers={{
+          click: (e) => {
+            map.flyTo(e.latlng, 6, { animate: true, duration: 2, easeLinearity: 0.5 });
+          },
+        }}
+        key={mountain.id}
+        icon={mountainIcon}
+        position={getLatLang(geometry.coordinates)}
+        zIndexOffset={22}
+      >
+        <Tooltip>{properties.name}</Tooltip>
+      </Marker>
     );
   });
 };
