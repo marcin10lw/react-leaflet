@@ -1,4 +1,4 @@
-import { Marker, Tooltip } from 'react-leaflet';
+import { Marker, Tooltip, useMap } from 'react-leaflet';
 
 import { mountainIcon } from 'src/icons';
 import { HighestPointsCollection } from 'src/types';
@@ -9,7 +9,9 @@ interface HighestPointsLayerProps {
 }
 
 export const HighestPointsLayer = ({ data: mountains }: HighestPointsLayerProps) => {
-  return mountains.features.map((mountain, i) => {
+  const map = useMap();
+
+  return mountains.features.map((mountain) => {
     const { properties, geometry } = mountain;
 
     return (
@@ -17,12 +19,13 @@ export const HighestPointsLayer = ({ data: mountains }: HighestPointsLayerProps)
         <Marker
           eventHandlers={{
             click: (e) => {
-              console.log(e);
+              map.flyTo(e.latlng, 3, { animate: true, duration: 1, easeLinearity: 0.5 });
             },
           }}
-          key={i}
+          key={properties.name}
           icon={mountainIcon}
           position={getLatLang(geometry.coordinates)}
+          zIndexOffset={22}
         >
           <Tooltip>{properties.name}</Tooltip>
         </Marker>
