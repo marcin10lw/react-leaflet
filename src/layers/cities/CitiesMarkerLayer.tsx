@@ -2,9 +2,9 @@ import { Marker, useMap } from 'react-leaflet';
 
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 
-import { defaultIcon, selectedIcon } from '../icons';
-import { CitiesCollection } from '../types';
-import { getLatLang } from '../utils/getLatLangExpression';
+import { defaultIcon, selectedIcon } from '../../icons';
+import { CitiesCollection } from '../../types';
+import { getLatLang } from '../../utils/getLatLangExpression';
 import { CityPopup } from './CityPopup';
 
 interface CitiesMarkerLayerProps {

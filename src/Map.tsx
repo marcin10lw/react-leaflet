@@ -2,8 +2,8 @@ import { Circle, MapContainer, TileLayer } from 'react-leaflet';
 
 import { cities } from './data/cities';
 import { highestPoints } from './data/highestPoints';
-import { CitiesMarkerLayer } from './layers/CitiesMarkerLayer';
-import { HighestPointsLayer } from './layers/HighestPointsLayer';
+import { CitiesMarkerLayer } from './layers/cities/CitiesMarkerLayer';
+import { HighestPointsLayer } from './layers/highestPoints/HighestPointsLayer';
 import { useRadiusFilterStore } from './store/radiusFilterStore';
 import { getLatLang } from './utils/getLatLangExpression';
 
