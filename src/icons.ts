@@ -1,15 +1,20 @@
 import L from 'leaflet';
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import cityIconUrl from 'src/images/city_icon.svg';
+import selectedIconUrl from 'src/images/city_icon_selected.svg';
 import mountainIconUrl from 'src/images/mountain_icon.svg';
 
 export const defaultIcon = L.icon({
-  iconUrl,
-  shadowUrl: iconShadow,
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
+  iconUrl: cityIconUrl,
+  iconAnchor: [20, 40],
+  popupAnchor: [-1, -40],
   tooltipAnchor: [16, -28],
-  shadowSize: [41, 41],
+});
+
+export const selectedIcon = L.icon({
+  iconUrl: selectedIconUrl,
+  iconAnchor: [20, 40],
+  popupAnchor: [-1, -40],
+  tooltipAnchor: [16, -28],
 });
 
 export const mountainIcon = L.icon({

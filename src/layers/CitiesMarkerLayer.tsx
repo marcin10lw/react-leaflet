@@ -2,7 +2,7 @@ import { Marker, useMap } from 'react-leaflet';
 
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 
-import { defaultIcon } from '../icons';
+import { defaultIcon, selectedIcon } from '../icons';
 import { CitiesCollection } from '../types';
 import { getLatLang } from '../utils/getLatLangExpression';
 import { CityPopup } from './CityPopup';
@@ -13,7 +13,7 @@ interface CitiesMarkerLayerProps {
 export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
   const map = useMap();
   const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
-  console.log(radiusFilter);
+
   const filteredCities = cities.features.filter((city) => {
     if (radiusFilter) {
       const { cityFeature, radius } = radiusFilter;
@@ -30,13 +30,15 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
   });
 
   return filteredCities.map((city, i) => {
+    const isSameSelectedCity = radiusFilter?.cityFeature === city;
+
     return (
       <Marker
         key={city.properties.name + i}
         eventHandlers={{
           click: () => {},
         }}
-        icon={defaultIcon}
+        icon={isSameSelectedCity ? selectedIcon : defaultIcon}
         position={getLatLang(city.geometry.coordinates)}
       >
         <CityPopup city={city} />
