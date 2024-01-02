@@ -3,7 +3,7 @@ import { GeoJSON, GeoJSONProps } from 'react-leaflet';
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { Continent, ContinentsCollection } from 'src/types';
 
-import { continentsStyles } from './continentsStyles';
+import { continentsStyles, selectedContinentStyles } from './continentsStyles';
 
 interface ContinentsLayerProps {
   data: ContinentsCollection;
@@ -14,10 +14,12 @@ export const ContinentsLayer = ({ data }: ContinentsLayerProps) => {
 
   const setGeoFilter = useGeoFilterStore((state) => state.setGeoFilter);
   const geoFilter = useGeoFilterStore((state) => state.geoFilter);
-  console.log(geoFilter?.selectedContinent.properties.CONTINENT);
+
   return continents.map((continent) => {
+    const isSelectedContinent = geoFilter?.selectedContinent === continent;
+
     const onContinentClick = () => {
-      if (geoFilter?.selectedContinent === continent) {
+      if (isSelectedContinent) {
         setGeoFilter(null);
       } else {
         setGeoFilter({
@@ -26,11 +28,15 @@ export const ContinentsLayer = ({ data }: ContinentsLayerProps) => {
       }
     };
 
+    const pathOptions = isSelectedContinent
+      ? selectedContinentStyles
+      : continentsStyles[continent.properties.CONTINENT];
+
     return (
       <GeoJSON
-        key="geojson layer"
+        key={continent.properties.CONTINENT}
         data={continent as GeoJSONProps['data']}
-        pathOptions={continentsStyles[continent.properties.CONTINENT]}
+        pathOptions={pathOptions}
         eventHandlers={{
           click: onContinentClick,
         }}
