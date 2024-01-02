@@ -13,6 +13,10 @@ html {
   width: 100%;
 }
 
+.leaflet-interactive {
+  outline: none;
+}
+
 p {
   margin: 0;
   padding: 0;

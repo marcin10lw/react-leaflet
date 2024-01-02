@@ -1,4 +1,4 @@
-import { GeoJSON, GeoJSONProps } from 'react-leaflet';
+import { GeoJSON, GeoJSONProps, Tooltip } from 'react-leaflet';
 
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { Continent, ContinentsCollection } from 'src/types';
@@ -16,6 +16,8 @@ export const ContinentsLayer = ({ data }: ContinentsLayerProps) => {
   const geoFilter = useGeoFilterStore((state) => state.geoFilter);
 
   return continents.map((continent) => {
+    const continentName = continent.properties.CONTINENT;
+
     const isSelectedContinent = geoFilter?.selectedContinent === continent;
 
     const onContinentClick = () => {
@@ -30,17 +32,21 @@ export const ContinentsLayer = ({ data }: ContinentsLayerProps) => {
 
     const pathOptions = isSelectedContinent
       ? selectedContinentStyles
-      : continentsStyles[continent.properties.CONTINENT];
+      : continentsStyles[continentName];
 
     return (
       <GeoJSON
-        key={continent.properties.CONTINENT}
+        key={continentName}
         data={continent as GeoJSONProps['data']}
         pathOptions={pathOptions}
         eventHandlers={{
           click: onContinentClick,
         }}
-      />
+      >
+        <Tooltip direction="top" sticky offset={[0, -10]}>
+          {continentName}
+        </Tooltip>
+      </GeoJSON>
     );
   });
 };
