@@ -1,8 +1,10 @@
 import { Circle, MapContainer, TileLayer } from 'react-leaflet';
 
 import { cities } from './data/cities';
+import { continents } from './data/continents';
 import { highestPoints } from './data/highestPoints';
 import { CitiesMarkerLayer } from './layers/cities/CitiesMarkerLayer';
+import { ContinentsLayer } from './layers/continents/ContinentsLayer';
 import { HighestPointsLayer } from './layers/highestPoints/HighestPointsLayer';
 import { useRadiusFilterStore } from './store/radiusFilterStore';
 import { getLatLang } from './utils/getLatLangExpression';
@@ -28,6 +30,7 @@ export const Map = () => {
           radius={radiusFilter.radius * 1000}
         />
       )}
+      <ContinentsLayer data={continents} />
     </MapContainer>
   );
 };
