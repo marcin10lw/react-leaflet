@@ -5,6 +5,4 @@ import 'leaflet/dist/leaflet.css';
 import App from './App.tsx';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <App />
-);
+ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
