@@ -1,6 +1,8 @@
 import { Marker, useMap } from 'react-leaflet';
 
+import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import { defaultIcon, selectedIcon } from 'src/icons';
+import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { CitiesCollection } from 'src/types';
 import { getLatLang } from 'src/utils/getLatLangExpression';
@@ -13,6 +15,7 @@ interface CitiesMarkerLayerProps {
 export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
   const map = useMap();
   const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
+  const geoFilter = useGeoFilterStore((state) => state.geoFilter);
 
   const filteredCities = cities.features.filter((city) => {
     if (radiusFilter) {
@@ -24,6 +27,10 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
       );
 
       return distance / 1000 <= radius;
+    }
+
+    if (geoFilter) {
+      return booleanPointInPolygon(city, geoFilter.selectedContinent);
     }
 
     return true;

@@ -1,6 +1,7 @@
 import { GeoJSON, GeoJSONProps } from 'react-leaflet';
 
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
+import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { Continent, ContinentsCollection } from 'src/types';
 
 import { continentsStyles, selectedContinentStyles } from './continentsStyles';
@@ -12,6 +13,7 @@ interface ContinentsLayerProps {
 export const ContinentsLayer = ({ data: continents }: ContinentsLayerProps) => {
   const setGeoFilter = useGeoFilterStore((state) => state.setGeoFilter);
   const geoFilter = useGeoFilterStore((state) => state.geoFilter);
+  const setRadiusFilter = useRadiusFilterStore((state) => state.setRadiusFilter);
 
   const onContinentClick = (continent: Continent) => {
     const isSelectedContinent = geoFilter?.selectedContinent === continent;
@@ -22,6 +24,8 @@ export const ContinentsLayer = ({ data: continents }: ContinentsLayerProps) => {
       setGeoFilter({
         selectedContinent: continent,
       });
+
+      setRadiusFilter(null);
     }
   };
 
