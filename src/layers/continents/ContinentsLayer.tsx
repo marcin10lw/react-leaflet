@@ -1,4 +1,4 @@
-import { GeoJSON, GeoJSONProps, Tooltip } from 'react-leaflet';
+import { GeoJSON, GeoJSONProps } from 'react-leaflet';
 
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { Continent, ContinentsCollection } from 'src/types';
@@ -9,15 +9,13 @@ interface ContinentsLayerProps {
   data: ContinentsCollection;
 }
 
-const ContinenrGeoJSON = ({ continent }: { continent: Continent }) => {
+export const ContinentsLayer = ({ data: continents }: ContinentsLayerProps) => {
   const setGeoFilter = useGeoFilterStore((state) => state.setGeoFilter);
   const geoFilter = useGeoFilterStore((state) => state.geoFilter);
 
-  const continentName = continent.properties.CONTINENT;
+  const onContinentClick = (continent: Continent) => {
+    const isSelectedContinent = geoFilter?.selectedContinent === continent;
 
-  const isSelectedContinent = geoFilter?.selectedContinent === continent;
-
-  const onContinentClick = () => {
     if (isSelectedContinent) {
       setGeoFilter(null);
     } else {
@@ -27,28 +25,21 @@ const ContinenrGeoJSON = ({ continent }: { continent: Continent }) => {
     }
   };
 
-  const pathOptions = isSelectedContinent
-    ? selectedContinentStyles
-    : continentsStyles[continentName];
-
   return (
     <GeoJSON
-      key={continentName}
-      data={continent as GeoJSONProps['data']}
-      pathOptions={pathOptions}
-      eventHandlers={{
-        click: onContinentClick,
+      data={continents as GeoJSONProps['data']}
+      style={(feature) => {
+        const continentName = feature?.properties.CONTINENT;
+        return geoFilter?.selectedContinent === feature
+          ? selectedContinentStyles
+          : continentsStyles[continentName];
       }}
-    >
-      <Tooltip sticky>{continentName}</Tooltip>
-    </GeoJSON>
+      eventHandlers={{
+        click: (event) => {
+          const feature = event.sourceTarget.feature as Continent;
+          onContinentClick(feature);
+        },
+      }}
+    />
   );
-};
-
-export const ContinentsLayer = ({ data }: ContinentsLayerProps) => {
-  const continents = data.features as Continent[];
-
-  return continents.map((continent) => {
-    return <ContinenrGeoJSON continent={continent} />;
-  });
 };
