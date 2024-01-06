@@ -1,5 +1,6 @@
 import { Marker, useMap } from 'react-leaflet';
 
+// @ts-expect-error: The type definitions for boolean-point-in-polygon are incomplete.
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import { defaultIcon, selectedIcon } from 'src/icons';
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
