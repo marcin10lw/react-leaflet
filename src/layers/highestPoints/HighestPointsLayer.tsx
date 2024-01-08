@@ -1,4 +1,4 @@
-import { Marker, Tooltip, useMap } from 'react-leaflet';
+import { LayerGroup, LayersControl, Marker, Tooltip, useMap } from 'react-leaflet';
 
 import { mountainIcon } from 'src/icons';
 import { HighestPointsCollection } from 'src/types';
@@ -11,7 +11,7 @@ interface HighestPointsLayerProps {
 export const HighestPointsLayer = ({ data: mountains }: HighestPointsLayerProps) => {
   const map = useMap();
 
-  return mountains.features.map((mountain) => {
+  const highestPointsLayer = mountains.features.map((mountain) => {
     const { properties, geometry } = mountain;
 
     return (
@@ -30,4 +30,10 @@ export const HighestPointsLayer = ({ data: mountains }: HighestPointsLayerProps)
       </Marker>
     );
   });
+
+  return (
+    <LayersControl.Overlay checked name="Highest Points">
+      <LayerGroup>{highestPointsLayer}</LayerGroup>
+    </LayersControl.Overlay>
+  );
 };

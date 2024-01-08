@@ -8,15 +8,6 @@ html {
   box-sizing: inherit;
 }
 
-.leaflet-container {
-  min-height: 100vh;
-  width: 100%;
-}
-
-.leaflet-interactive {
-  outline: none;
-}
-
 p {
   margin: 0;
   padding: 0;

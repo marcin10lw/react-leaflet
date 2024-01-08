@@ -1,4 +1,4 @@
-import { Marker, useMap } from 'react-leaflet';
+import { LayerGroup, LayersControl, Marker, useMap } from 'react-leaflet';
 
 // @ts-expect-error: The type definitions for boolean-point-in-polygon are incomplete.
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
@@ -37,7 +37,7 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
     return true;
   });
 
-  return filteredCities.map((city) => {
+  const citiesLayer = filteredCities.map((city) => {
     const isSameSelectedCity = radiusFilter?.cityFeature === city;
 
     return (
@@ -53,4 +53,10 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
       </Marker>
     );
   });
+
+  return (
+    <LayersControl.Overlay checked name="World Popular Cities">
+      <LayerGroup>{citiesLayer}</LayerGroup>
+    </LayersControl.Overlay>
+  );
 };

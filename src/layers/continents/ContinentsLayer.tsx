@@ -1,4 +1,4 @@
-import { GeoJSON, GeoJSONProps } from 'react-leaflet';
+import { GeoJSON, GeoJSONProps, LayersControl } from 'react-leaflet';
 
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
@@ -30,20 +30,29 @@ export const ContinentsLayer = ({ data: continents }: ContinentsLayerProps) => {
   };
 
   return (
-    <GeoJSON
-      data={continents as GeoJSONProps['data']}
-      style={(feature) => {
-        const continentName = feature?.properties.CONTINENT;
-        return geoFilter?.selectedContinent === feature
-          ? selectedContinentStyles
-          : continentsStyles[continentName];
-      }}
-      eventHandlers={{
-        click: (event) => {
-          const feature = event.sourceTarget.feature as Continent;
-          onContinentClick(feature);
-        },
-      }}
-    />
+    <LayersControl.Overlay checked name="Continents">
+      <GeoJSON
+        data={continents as GeoJSONProps['data']}
+        style={(feature) => {
+          const continentName = feature?.properties.CONTINENT;
+          return geoFilter?.selectedContinent === feature
+            ? selectedContinentStyles
+            : continentsStyles[continentName];
+        }}
+        eventHandlers={{
+          click: (event) => {
+            const feature = event.sourceTarget.feature as Continent;
+            onContinentClick(feature);
+          },
+        }}
+        onEachFeature={(feature, layer) => {
+          const continentName = feature.properties.CONTINENT;
+
+          if (continentName) {
+            layer.bindTooltip(continentName, { sticky: true });
+          }
+        }}
+      />
+    </LayersControl.Overlay>
   );
 };
