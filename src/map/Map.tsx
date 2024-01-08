@@ -1,5 +1,7 @@
 import { Circle, LayersControl, MapContainer, TileLayer } from 'react-leaflet';
 
+import { FitBoundsToDataControl } from 'src/controls/fitDataToBounds';
+
 import { cities } from '../data/cities';
 import { continents } from '../data/continents';
 import { highestPoints } from '../data/highestPoints';
@@ -36,6 +38,8 @@ export const Map = () => {
         )}
         <ContinentsLayer data={continents} />
       </LayersControl>
+
+      <FitBoundsToDataControl />
     </MapContainer>
   );
 };
