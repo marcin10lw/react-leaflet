@@ -6,7 +6,7 @@ import { defaultIcon, selectedIcon } from 'src/icons';
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { CitiesCollection } from 'src/types';
-import { getLatLang } from 'src/utils/getLatLangExpression';
+import { getLatLang } from 'src/utils';
 
 import { CityPopup } from './CityPopup';
 

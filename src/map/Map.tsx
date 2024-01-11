@@ -1,6 +1,7 @@
 import { Circle, LayersControl, MapContainer, TileLayer } from 'react-leaflet';
 
 import { FitBoundsToDataControl } from 'src/controls/fitDataToBounds';
+import { getLatLang } from 'src/utils';
 
 import { cities } from '../data/cities';
 import { continents } from '../data/continents';
@@ -9,7 +10,6 @@ import { CitiesMarkerLayer } from '../layers/cities/CitiesMarkerLayer';
 import { ContinentsLayer } from '../layers/continents/ContinentsLayer';
 import { HighestPointsLayer } from '../layers/highestPoints/HighestPointsLayer';
 import { useRadiusFilterStore } from '../store/radiusFilterStore';
-import { getLatLang } from '../utils/getLatLangExpression';
 import './style.css';
 
 export const Map = () => {

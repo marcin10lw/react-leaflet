@@ -6,7 +6,7 @@ import { Button, Card, Flex, InputNumber } from 'antd';
 import { INITIAL_RADIUS_FILTER } from 'src/constants';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { City } from 'src/types';
-import { formatNumber } from 'src/utils/formatNumber';
+import { formatNumber } from 'src/utils';
 
 interface CityPopupProps {
   city: City;

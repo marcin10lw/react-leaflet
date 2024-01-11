@@ -2,7 +2,7 @@ import { LayerGroup, LayersControl, Marker, Tooltip, useMap } from 'react-leafle
 
 import { mountainIcon } from 'src/icons';
 import { HighestPointsCollection } from 'src/types';
-import { getLatLang } from 'src/utils/getLatLangExpression';
+import { getLatLang } from 'src/utils';
 
 interface HighestPointsLayerProps {
   data: HighestPointsCollection;

@@ -12,18 +12,46 @@ const FitBoundsToDataControlClass = Control.extend({
     position: 'topleft',
   },
   onAdd: function (map: Map) {
+    const doFitDataToBounds = () => {
+      const latLngs = [];
+      map.eachLayer((layer) => {
+        const latLng = layer.options.doFitToBounds && layer.getLatLng();
+        if (latLng) {
+          latLngs.push(latLng);
+        }
+      });
+
+      map.fitBounds(latLngs, {
+        duration: 2000,
+      });
+
+      console.log(latLngs);
+    };
+
     const root = createRoot(node);
     root.render(
-      <Button
-        className="leaflet-control-layers"
-        title="Fit bounds to world"
-        icon={<BorderOuterOutlined />}
-        style={{
-          width: 34,
-          height: 34,
-        }}
-        onClick={() => map.fitWorld()}
-      ></Button>,
+      <>
+        <Button
+          className="leaflet-control-layers"
+          title="Fit bounds to data"
+          icon={<BorderOuterOutlined />}
+          style={{
+            width: 34,
+            height: 34,
+          }}
+          onClick={() => doFitDataToBounds()}
+        ></Button>
+        <Button
+          className="leaflet-control-layers"
+          title="Fit bounds to world"
+          icon={<BorderOuterOutlined />}
+          style={{
+            width: 34,
+            height: 34,
+          }}
+          onClick={() => map.fitWorld()}
+        ></Button>
+      </>,
     );
 
     return node;
