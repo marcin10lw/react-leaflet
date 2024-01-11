@@ -11,14 +11,19 @@ import { HighestPointsLayer } from '../layers/highestPoints/HighestPointsLayer';
 import { useRadiusFilterStore } from '../store/radiusFilterStore';
 import './style.css';
 
-export const Map = () => {
+interface MapProps {
+  children?: React.ReactNode;
+  zoom?: number;
+}
+
+export const Map = ({ children, zoom }: MapProps) => {
   const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
 
   return (
     <MapContainer
       className="absolute z-[100]"
       center={[0, 0]}
-      zoom={2}
+      zoom={zoom}
       attributionControl={false}
       zoomControl={false}
     >
@@ -43,6 +48,7 @@ export const Map = () => {
         )}
         <ContinentsLayer data={continents} />
       </LayersControl>
+      {children}
     </MapContainer>
   );
 };

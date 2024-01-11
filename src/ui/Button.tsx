@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from 'src/utils';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const buttonVariants = cva('shadow flex items-center justify-center', {
   variants: {
     variant: {
