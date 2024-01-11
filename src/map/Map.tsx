@@ -1,6 +1,5 @@
 import { Circle, LayersControl, MapContainer, TileLayer } from 'react-leaflet';
 
-import { FitBoundsToDataControl } from 'src/controls/fitDataToBounds';
 import { getLatLang } from 'src/utils';
 
 import { cities } from '../data/cities';
@@ -16,7 +15,13 @@ export const Map = () => {
   const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
 
   return (
-    <MapContainer center={[0, 0]} zoom={2}>
+    <MapContainer
+      className="absolute z-[100]"
+      center={[0, 0]}
+      zoom={2}
+      attributionControl={false}
+      zoomControl={false}
+    >
       <LayersControl position="topright">
         <LayersControl.BaseLayer checked name="OSM Streets">
           <TileLayer
@@ -38,8 +43,6 @@ export const Map = () => {
         )}
         <ContinentsLayer data={continents} />
       </LayersControl>
-
-      <FitBoundsToDataControl />
     </MapContainer>
   );
 };
