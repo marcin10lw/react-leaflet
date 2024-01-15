@@ -16,15 +16,13 @@ export const CustomFitBoundsControl = () => {
     ) as LatLngBoundsExpression;
 
     if (filteredCitiesBounds) {
-      map.fitBounds(filteredCitiesBounds, {
-        maxZoom: 4,
-      });
+      map.fitBounds(filteredCitiesBounds);
     }
   };
 
   return (
     <Button onClick={onFitBounds}>
-      <ShrinkOutlined style={{ width: 16, height: 16 }} />
+      <ShrinkOutlined />
     </Button>
   );
 };

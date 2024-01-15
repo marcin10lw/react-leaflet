@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { CustomFitBoundsControl } from './controls/CustomFitBoundsControl';
+import { CustomFitWorldControl } from './controls/CustomFitWorldControl';
 import { CustomZoomControl } from './controls/CustomZoomControl';
 import { Map } from './map/Map';
 import { ZoomControlPlugin } from './map/ZoomControlPlugin';
@@ -14,7 +15,10 @@ function App() {
         <ZoomControlPlugin zoom={zoom || 2} />
         <div className="absolute z-[1000] flex flex-col gap-4 pl-4 pt-4">
           <CustomZoomControl zoom={zoom} setZoom={setZoom} />
-          <CustomFitBoundsControl />
+          <div className="flex flex-col gap-[2px]">
+            <CustomFitBoundsControl />
+            <CustomFitWorldControl />
+          </div>
         </div>
       </Map>
     </main>
