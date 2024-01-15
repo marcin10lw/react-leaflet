@@ -24,6 +24,8 @@ export const Map = ({ children, zoom }: MapProps) => {
       className="absolute z-[100]"
       center={[0, 0]}
       zoom={zoom}
+      minZoom={2}
+      maxZoom={18}
       attributionControl={false}
       zoomControl={false}
     >
