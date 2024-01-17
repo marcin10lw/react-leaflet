@@ -15,10 +15,10 @@ function App() {
         <ZoomControlPlugin zoom={zoom || 2} />
         <div className="absolute z-[1000] flex flex-col gap-4 pl-4 pt-4">
           <CustomZoomControl zoom={zoom} setZoom={setZoom} />
-          <div className="flex flex-col gap-[2px]">
-            <CustomFitBoundsControl />
-            <CustomFitWorldControl />
-          </div>
+        </div>
+        <div className="absolute right-[14px] top-20 z-[1000] flex flex-col gap-[2px]">
+          <CustomFitBoundsControl />
+          <CustomFitWorldControl />
         </div>
       </Map>
     </main>
