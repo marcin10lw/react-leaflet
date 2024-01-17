@@ -21,9 +21,7 @@ function App() {
           <CustomFitBoundsControl />
           <CustomFitWorldControl />
         </div>
-        <div className="absolute bottom-4 left-4 z-[1000]">
-          <ActiveFilters />
-        </div>
+        <ActiveFilters />
       </Map>
     </main>
   );
