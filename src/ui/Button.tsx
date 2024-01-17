@@ -19,7 +19,7 @@ export const buttonVariants = cva('shadow flex items-center justify-center', {
   },
 });
 
-interface ButtonProps
+export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
