@@ -8,9 +8,11 @@ interface GeoFilter {
 interface GeoFilterStore {
   geoFilter: GeoFilter | null;
   setGeoFilter: (geoFilter: GeoFilter | null) => void;
+  clearGeoFilter: () => void;
 }
 
 export const useGeoFilterStore = create<GeoFilterStore>((set) => ({
   geoFilter: null,
   setGeoFilter: (geoFilter) => set({ geoFilter }),
+  clearGeoFilter: () => set({ geoFilter: null }),
 }));

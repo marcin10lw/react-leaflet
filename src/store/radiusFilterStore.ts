@@ -9,6 +9,7 @@ interface RadiusFilter {
 interface RadiusFilterStore {
   radiusFilter: RadiusFilter | null;
   setRadiusFilter: (radiusFilter: RadiusFilter | null) => void;
+  clearRadiusFilter: () => void;
 }
 
 export const useRadiusFilterStore = create<RadiusFilterStore>((set) => ({
@@ -16,4 +17,5 @@ export const useRadiusFilterStore = create<RadiusFilterStore>((set) => ({
   setRadiusFilter: (radiusFilter) => {
     set({ radiusFilter });
   },
+  clearRadiusFilter: () => set({ radiusFilter: null }),
 }));

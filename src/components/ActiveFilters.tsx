@@ -3,8 +3,8 @@ import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 
 export const ActiveFilters = () => {
-  const { radiusFilter, setRadiusFilter } = useRadiusFilterStore();
-  const { geoFilter, setGeoFilter } = useGeoFilterStore();
+  const { radiusFilter, clearRadiusFilter } = useRadiusFilterStore();
+  const { geoFilter, clearGeoFilter } = useGeoFilterStore();
 
   const getActiveFiltersList = () => {
     const activeFilters: {
@@ -21,14 +21,14 @@ export const ActiveFilters = () => {
 
       activeFilters.push({
         content: `Center: (Lat: ${lat.toFixed(2)}, Lon: ${lng.toFixed(2)}) Radius: ${radius}`,
-        clearAction: () => setRadiusFilter(null),
+        clearAction: clearRadiusFilter,
       });
     }
 
     if (geoFilter) {
       activeFilters.push({
         content: `Continent: ${geoFilter.selectedContinent.properties.CONTINENT}`,
-        clearAction: () => setGeoFilter(null),
+        clearAction: clearGeoFilter,
       });
     }
 
