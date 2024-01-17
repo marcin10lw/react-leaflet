@@ -51,7 +51,7 @@ export const ActiveFilters = () => {
       <section className="relative rounded-md border-2 border-slate-300 bg-white px-6 py-4 shadow-xl">
         <button
           onClick={() => setIsOpen((isOpen) => !isOpen)}
-          className="absolute bottom-[calc(100%_+_6px)] left-0 rounded-md border-2 border-slate-300 bg-white px-2 py-1"
+          className="absolute bottom-[calc(100%_+_16px)] left-0 rounded-md border-2 border-slate-300 bg-white px-2 py-1"
         >
           <div className="flex items-center gap-1 font-semibold uppercase text-slate-600">
             <span

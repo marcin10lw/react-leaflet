@@ -8,7 +8,7 @@ export const buttonVariants = cva('shadow flex items-center justify-center', {
   variants: {
     variant: {
       control:
-        'bg-white <text-slate-800></text-slate-800> border-2 rounded border-slate-400 hover:scale-95 w-[40px] h-[40px]',
+        'bg-white disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 text-slate-700 border-2 rounded border-slate-400 hover:scale-95 w-[40px] h-[40px]',
       primary:
         'bg-blue-600 text-white py-1 px-2 rounded hover:opacity-95 transition-all duration-200',
     },
