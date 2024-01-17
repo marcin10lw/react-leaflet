@@ -3,7 +3,7 @@ import { useMap } from 'react-leaflet';
 import { ShrinkOutlined } from '@ant-design/icons';
 import { LatLngBoundsExpression } from 'leaflet';
 import { useFilteredCitiesStore } from 'src/store/filteredCitiesStore';
-import { Button } from 'src/ui/Button';
+import { Button } from 'src/ui/atoms/Button';
 import { getLatLang } from 'src/utils';
 
 export const CustomFitBoundsControl = () => {

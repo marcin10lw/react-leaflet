@@ -1,5 +1,5 @@
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button } from 'src/ui/Button';
+import { Button } from 'src/ui/atoms/Button';
 
 interface CustomZoomControlPorps {
   zoom: number;
