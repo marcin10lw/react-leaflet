@@ -1,12 +1,16 @@
+import { CloseOutlined } from '@ant-design/icons';
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 
 export const ActiveFilters = () => {
-  const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
-  const geoFilter = useGeoFilterStore((state) => state.geoFilter);
+  const { radiusFilter, setRadiusFilter } = useRadiusFilterStore();
+  const { geoFilter, setGeoFilter } = useGeoFilterStore();
 
   const getActiveFiltersList = () => {
-    const activeFilters: string[] = [];
+    const activeFilters: {
+      content: string;
+      clearAction: () => void;
+    }[] = [];
 
     if (radiusFilter) {
       const {
@@ -15,13 +19,17 @@ export const ActiveFilters = () => {
       } = radiusFilter;
       const [lng, lat] = geometry.coordinates;
 
-      activeFilters.push(
-        `Center: (Lat: ${lat.toFixed(2)}, Lon: ${lng.toFixed(2)}) Radius: ${radius}`,
-      );
+      activeFilters.push({
+        content: `Center: (Lat: ${lat.toFixed(2)}, Lon: ${lng.toFixed(2)}) Radius: ${radius}`,
+        clearAction: () => setRadiusFilter(null),
+      });
     }
 
     if (geoFilter) {
-      activeFilters.push(`Continent: ${geoFilter.selectedContinent.properties.CONTINENT}`);
+      activeFilters.push({
+        content: `Continent: ${geoFilter.selectedContinent.properties.CONTINENT}`,
+        clearAction: () => setGeoFilter(null),
+      });
     }
 
     return activeFilters;
@@ -35,13 +43,19 @@ export const ActiveFilters = () => {
       <div>
         {activeFiltersList.length > 0 ? (
           <ul>
-            {activeFiltersList.map((activeFilter) => (
+            {activeFiltersList.map(({ content, clearAction }) => (
               <li
                 className="flex items-center gap-2 py-1 pl-2 text-lg text-slate-800"
-                key={activeFilter}
+                key={content}
               >
                 <span className="h-2 w-2 rounded-full bg-slate-500" />
-                <div>{activeFilter}</div>
+                <div>{content}</div>
+                <button
+                  className="opacity-50 transition-opacity duration-200 hover:opacity-100"
+                  onClick={clearAction}
+                >
+                  <CloseOutlined />
+                </button>
               </li>
             ))}
           </ul>
