@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from './Button';
+import { Button, type ButtonProps } from '../atoms/Button';
 
 interface TooltipButtonProps extends ButtonProps {
   tooltip: string;

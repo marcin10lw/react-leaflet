@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Popup } from 'react-leaflet';
 
 import { CloseOutlined, FilterOutlined } from '@ant-design/icons';
-import { Button, Card, Flex, InputNumber } from 'antd';
+import { Button, Flex, InputNumber } from 'antd';
 import { INITIAL_RADIUS_FILTER } from 'src/constants';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { City } from 'src/types';
+import { Card } from 'src/ui/atoms/Card';
 import { formatNumber } from 'src/utils';
 
 interface CityPopupProps {
@@ -35,10 +36,10 @@ export const CityPopup = ({ city, isSameSelectedCity }: CityPopupProps) => {
   const { adm0name, name, pop_max } = city.properties;
   return (
     <Popup>
-      <Card title="City" type="inner">
+      <Card title="City">
         <p>{`${name}, ${adm0name}`}</p>
       </Card>
-      <Card type="inner" title="Population">
+      <Card title="Population">
         <p>{formatNumber(pop_max)}</p>
       </Card>
 
