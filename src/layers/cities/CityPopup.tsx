@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Popup } from 'react-leaflet';
 
 import { CloseOutlined, FilterOutlined } from '@ant-design/icons';
-import { Button, Flex, InputNumber } from 'antd';
 import { INITIAL_RADIUS_FILTER } from 'src/constants';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { City } from 'src/types';
+import { Button } from 'src/ui/atoms/Button';
 import { Card } from 'src/ui/atoms/Card';
 import { formatNumber } from 'src/utils';
 
@@ -14,7 +14,7 @@ interface CityPopupProps {
   isSameSelectedCity: boolean;
 }
 export const CityPopup = ({ city, isSameSelectedCity }: CityPopupProps) => {
-  const [radiusInput, setRadiusInput] = useState<number | null>(INITIAL_RADIUS_FILTER);
+  const [radiusInput, setRadiusInput] = useState<number>(INITIAL_RADIUS_FILTER);
 
   const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
   const setRadiusFilter = useRadiusFilterStore((state) => state.setRadiusFilter);
@@ -43,18 +43,24 @@ export const CityPopup = ({ city, isSameSelectedCity }: CityPopupProps) => {
         <p>{formatNumber(pop_max)}</p>
       </Card>
 
-      <Flex gap={10}>
-        <InputNumber
+      <div className="mt-6 flex gap-[10px]">
+        <input
+          className="w-16 rounded border border-slate-300 p-1 outline-none"
           value={radiusInput}
-          onChange={(value) => setRadiusInput(value)}
+          onChange={({ target }) => setRadiusInput(target.valueAsNumber)}
           type="number"
           min={0}
         />
-        <Button onClick={onFilterButtonClick} type="primary" disabled={radiusInput === 0}>
+        <Button
+          variant="primary"
+          className="gap-2"
+          onClick={onFilterButtonClick}
+          disabled={radiusInput === 0}
+        >
           {isFiltering ? <CloseOutlined /> : <FilterOutlined />}
           {isFiltering ? 'Clear filter' : 'Filter by km'}
         </Button>
-      </Flex>
+      </div>
     </Popup>
   );
 };
