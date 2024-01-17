@@ -7,15 +7,16 @@ import { cn } from 'src/utils';
 export const buttonVariants = cva('shadow flex items-center justify-center', {
   variants: {
     variant: {
-      default: 'bg-slate-600 text-white hover:scale-95',
+      control: 'bg-slate-600 text-white hover:scale-95 w-[40px] h-[40px]',
+      primary:
+        'bg-blue-600 text-white py-1 px-2 rounded hover:opacity-95 transition-all duration-200',
     },
     size: {
-      default: 'w-[40px] h-[40px]',
+      default: 'w-full',
     },
   },
   defaultVariants: {
-    variant: 'default',
-    size: 'default',
+    variant: 'primary',
   },
 });
 

@@ -21,7 +21,7 @@ export const CustomFitBoundsControl = () => {
   };
 
   return (
-    <Button onClick={onFitBounds}>
+    <Button variant="control" onClick={onFitBounds}>
       <ShrinkOutlined />
     </Button>
   );

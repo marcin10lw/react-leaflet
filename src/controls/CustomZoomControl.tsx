@@ -18,10 +18,10 @@ export const CustomZoomControl = ({ zoom, setZoom }: CustomZoomControlPorps) => 
 
   return (
     <div className="flex flex-col gap-[2px]">
-      <Button onClick={increaseZoom}>
+      <Button variant="control" onClick={increaseZoom}>
         <PlusOutlined />
       </Button>
-      <Button onClick={decreaseZoom}>
+      <Button variant="control" onClick={decreaseZoom}>
         <MinusOutlined />
       </Button>
     </div>

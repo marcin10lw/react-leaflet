@@ -7,7 +7,7 @@ export const CustomFitWorldControl = () => {
   const map = useMap();
 
   return (
-    <Button onClick={() => map.fitWorld()}>
+    <Button variant="control" onClick={() => map.fitWorld()}>
       <FullscreenOutlined />
     </Button>
   );
