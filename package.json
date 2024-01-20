@@ -14,7 +14,6 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@turf/boolean-point-in-polygon": "^6.2.0",
-    "antd": "^5.12.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "gh-pages": "^6.1.1",
