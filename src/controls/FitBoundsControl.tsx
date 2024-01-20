@@ -8,7 +8,7 @@ import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { Button } from 'src/ui/atoms/Button';
 import { getLatLang } from 'src/utils';
 
-export const CustomFitBoundsControl = () => {
+export const FitBoundsControl = () => {
   const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
   const geoFilter = useGeoFilterStore((state) => state.geoFilter);
 
