@@ -62,7 +62,7 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
   });
 
   return (
-    <LayersControl.Overlay checked name="World Popular Cities">
+    <LayersControl.Overlay name="World Popular Cities">
       <LayerGroup>{citiesLayer}</LayerGroup>
     </LayersControl.Overlay>
   );

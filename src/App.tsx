@@ -17,7 +17,7 @@ function App() {
         <div className="absolute z-[1000] flex flex-col gap-4 pl-4 pt-4">
           <CustomZoomControl zoom={zoom} setZoom={setZoom} />
         </div>
-        <div className="absolute right-[14px] top-20 z-[1000] flex flex-col gap-[2px]">
+        <div className="absolute left-[16px] top-28 z-[1000] flex flex-col gap-[2px]">
           <CustomFitBoundsControl />
           <CustomFitWorldControl />
         </div>

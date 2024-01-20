@@ -32,7 +32,7 @@ export const HighestPointsLayer = ({ data: mountains }: HighestPointsLayerProps)
   });
 
   return (
-    <LayersControl.Overlay checked name="Highest Points">
+    <LayersControl.Overlay name="Highest Points">
       <LayerGroup>{highestPointsLayer}</LayerGroup>
     </LayersControl.Overlay>
   );

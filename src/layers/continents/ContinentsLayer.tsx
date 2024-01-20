@@ -30,7 +30,7 @@ export const ContinentsLayer = ({ data: continents }: ContinentsLayerProps) => {
   };
 
   return (
-    <LayersControl.Overlay checked name="Continents">
+    <LayersControl.Overlay name="Continents">
       <GeoJSON
         data={continents as GeoJSONProps['data']}
         style={(feature) => {
@@ -44,13 +44,6 @@ export const ContinentsLayer = ({ data: continents }: ContinentsLayerProps) => {
             const feature = event.sourceTarget.feature as Continent;
             onContinentClick(feature);
           },
-        }}
-        onEachFeature={(feature, layer) => {
-          const continentName = feature.properties.CONTINENT;
-
-          if (continentName) {
-            layer.bindTooltip(continentName, { sticky: true });
-          }
         }}
       />
     </LayersControl.Overlay>
