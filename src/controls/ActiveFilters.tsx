@@ -61,7 +61,10 @@ export const ActiveFilters = () => {
             >
               <UpOutlined />
             </span>
-            {isOpen ? 'show' : 'hide'}
+            <span>
+              {isOpen ? 'show' : 'hide'}
+              {activeFiltersList.length > 0 && ` (${activeFiltersList.length})`}
+            </span>
           </div>
         </button>
         <h2 className="text-lg font-bold text-slate-800">Active Filters</h2>

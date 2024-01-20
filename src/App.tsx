@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ActiveFilters } from './components/ActiveFilters';
+import { ActiveFilters } from './controls/ActiveFilters';
 import { CustomLayersControl } from './controls/CustomLayersControl';
 import { FitBoundsControl } from './controls/FitBoundsControl';
 import { FitWorldControl } from './controls/FitWorldControl';
