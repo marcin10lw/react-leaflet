@@ -2,9 +2,9 @@ import { TileLayer } from 'react-leaflet';
 
 import { useSelectedLayerStore } from 'src/store/mapSelectedLayerStore';
 
-import { customLayersControlConfig } from './configs';
+import { customLayersControlConfig } from '../controls/configs';
 
-const CustomLayersControl = () => {
+const LayersControlPlugin = () => {
   const selectedLayer = useSelectedLayerStore((state) => state.selectedLayer);
 
   return (
@@ -14,4 +14,4 @@ const CustomLayersControl = () => {
     />
   );
 };
-export default CustomLayersControl;
+export default LayersControlPlugin;

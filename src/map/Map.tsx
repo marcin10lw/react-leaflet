@@ -1,6 +1,6 @@
 import { Circle, LayersControl, MapContainer } from 'react-leaflet';
 
-import CustomLayersControl from 'src/controls/LayersControl';
+import LayersControlPlugin from 'src/map/LayersControlPlugin';
 import { getLatLang } from 'src/utils';
 
 import { cities } from '../data/cities';
@@ -31,7 +31,7 @@ export const Map = ({ children, zoom }: MapProps) => {
       zoomControl={false}
     >
       <LayersControl position="topright">
-        <CustomLayersControl />
+        <LayersControlPlugin />
         <CitiesMarkerLayer data={cities} />
         <HighestPointsLayer data={highestPoints} />
         {radiusFilter && (
