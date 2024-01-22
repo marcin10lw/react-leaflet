@@ -1,10 +1,8 @@
-import { LayersControl, MapContainer } from 'react-leaflet';
+import { MapContainer } from 'react-leaflet';
 
 import MapProviderLayerPlugin from 'src/map/MapProviderLayerPlugin';
 
-import { CitiesMarkerLayer } from '../layers/cities/CitiesMarkerLayer';
-import { ContinentsLayer } from '../layers/continents/ContinentsLayer';
-import { HighestPointsLayer } from '../layers/highestPoints/HighestPointsLayer';
+import { LayersPlugin } from './LayersPlugin';
 import './style.css';
 
 interface MapProps {
@@ -23,12 +21,8 @@ export const Map = ({ children, zoom }: MapProps) => {
       attributionControl={false}
       zoomControl={false}
     >
-      <LayersControl position="topright">
-        <MapProviderLayerPlugin />
-        <CitiesMarkerLayer />
-        <HighestPointsLayer />
-        <ContinentsLayer />
-      </LayersControl>
+      <MapProviderLayerPlugin />
+      <LayersPlugin />
       {children}
     </MapContainer>
   );

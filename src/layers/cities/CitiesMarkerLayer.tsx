@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Circle, LayerGroup, LayersControl, Marker, useMap } from 'react-leaflet';
+import { Circle, Marker, useMap } from 'react-leaflet';
 
 // @ts-expect-error: The type definitions for boolean-point-in-polygon are incomplete.
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
@@ -60,9 +60,7 @@ export const CitiesMarkerLayer = () => {
 
   return (
     <>
-      <LayersControl.Overlay name="World Popular Cities">
-        <LayerGroup>{citiesLayer}</LayerGroup>
-      </LayersControl.Overlay>
+      {citiesLayer}
       {radiusFilter && (
         <Circle
           pathOptions={{

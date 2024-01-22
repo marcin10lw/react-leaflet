@@ -1,4 +1,4 @@
-import { GeoJSON, GeoJSONProps, LayersControl } from 'react-leaflet';
+import { GeoJSON, GeoJSONProps } from 'react-leaflet';
 
 import { continents } from 'src/data/continents';
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
@@ -27,22 +27,20 @@ export const ContinentsLayer = () => {
   };
 
   return (
-    <LayersControl.Overlay name="Continents">
-      <GeoJSON
-        data={continents as GeoJSONProps['data']}
-        style={(feature) => {
-          const continentName = feature?.properties.CONTINENT;
-          return geoFilter?.selectedContinent === feature
-            ? selectedContinentStyles
-            : continentsStyles[continentName];
-        }}
-        eventHandlers={{
-          click: (event) => {
-            const feature = event.sourceTarget.feature as Continent;
-            onContinentClick(feature);
-          },
-        }}
-      />
-    </LayersControl.Overlay>
+    <GeoJSON
+      data={continents as GeoJSONProps['data']}
+      style={(feature) => {
+        const continentName = feature?.properties.CONTINENT;
+        return geoFilter?.selectedContinent === feature
+          ? selectedContinentStyles
+          : continentsStyles[continentName];
+      }}
+      eventHandlers={{
+        click: (event) => {
+          const feature = event.sourceTarget.feature as Continent;
+          onContinentClick(feature);
+        },
+      }}
+    />
   );
 };

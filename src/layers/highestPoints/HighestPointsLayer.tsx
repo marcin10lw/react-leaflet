@@ -1,4 +1,4 @@
-import { LayerGroup, LayersControl, Marker, Tooltip, useMap } from 'react-leaflet';
+import { Marker, Tooltip, useMap } from 'react-leaflet';
 
 import { highestPoints } from 'src/data/highestPoints';
 import { mountainIcon } from 'src/icons';
@@ -28,9 +28,5 @@ export const HighestPointsLayer = () => {
     );
   });
 
-  return (
-    <LayersControl.Overlay name="Highest Points">
-      <LayerGroup>{highestPointsLayer}</LayerGroup>
-    </LayersControl.Overlay>
-  );
+  return <>{highestPointsLayer}</>;
 };
