@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 import { ActiveFilters } from './controls/ActiveFilters';
-import { CustomLayersControl } from './controls/CustomLayersControl';
 import { FitBoundsControl } from './controls/FitBoundsControl';
 import { FitWorldControl } from './controls/FitWorldControl';
 import { ZoomControl } from './controls/ZoomControl';
+import { LayersControl } from './controls/layers/LayersControl';
 import { Map } from './map/Map';
 import { ZoomControlPlugin } from './map/ZoomControlPlugin';
 
@@ -22,8 +22,8 @@ function App() {
           <FitBoundsControl />
           <FitWorldControl />
         </div>
-        <div className="absolute right-[16px] top-40 z-[1000]">
-          <CustomLayersControl />
+        <div className="absolute right-[16px] top-4 z-[1000]">
+          <LayersControl />
         </div>
         <ActiveFilters />
       </Map>

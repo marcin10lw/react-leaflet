@@ -1,9 +1,9 @@
-import { SelectedLayer, useSelectedMapProviderStore } from 'src/store/mapProviderStore';
+import { SelectedLayer, useLayersStore } from 'src/store/layersStore';
 
-import { mapProviderConfig } from './configs';
+import { mapProviderConfig } from '../configs';
 
 export const MapProviderControl = () => {
-  const { selectedMapProvider, setSelectedMapProvider } = useSelectedMapProviderStore();
+  const { selectedMapProvider, setSelectedMapProvider } = useLayersStore();
 
   const tileLayers = Object.keys(mapProviderConfig) as SelectedLayer[];
 

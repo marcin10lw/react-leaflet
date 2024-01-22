@@ -1,9 +1,9 @@
-import { DisplayedLayer, useActiveLayersStore } from 'src/store/layersStore';
+import { DisplayedLayer, useLayersStore } from 'src/store/layersStore';
 
-import { layersConfig } from './configs';
+import { layersConfig } from '../configs';
 
-const LayersControl = () => {
-  const { activeLayers, toggleActiveLayer } = useActiveLayersStore();
+const MainLayersControl = () => {
+  const { activeLayers, toggleActiveLayer } = useLayersStore();
   const layersMap = Object.keys(layersConfig) as DisplayedLayer[];
 
   return (
@@ -27,4 +27,4 @@ const LayersControl = () => {
   );
 };
 
-export default LayersControl;
+export default MainLayersControl;

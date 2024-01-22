@@ -1,7 +1,5 @@
 import { MapContainer } from 'react-leaflet';
 
-import MapProviderLayerPlugin from 'src/map/MapProviderLayerPlugin';
-
 import { LayersPlugin } from './LayersPlugin';
 import './style.css';
 
@@ -21,7 +19,6 @@ export const Map = ({ children, zoom }: MapProps) => {
       attributionControl={false}
       zoomControl={false}
     >
-      <MapProviderLayerPlugin />
       <LayersPlugin />
       {children}
     </MapContainer>
