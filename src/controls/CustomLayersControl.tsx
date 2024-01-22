@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
 import { LeftOutlined } from '@ant-design/icons';
-import { SelectedLayer, useSelectedLayerStore } from 'src/store/mapSelectedLayerStore';
+import { SelectedLayer, useSelectedMapProviderStore } from 'src/store/mapProviderStore';
 import { Button } from 'src/ui/atoms/Button';
 
-import { customLayersControlConfig } from './configs';
+import { mapProviderConfig } from './configs';
 
 export const CustomLayersControl = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { selectedLayer, setSelectedLayer } = useSelectedLayerStore();
+  const { selectedMapProvider, setSelectedMapProvider } = useSelectedMapProviderStore();
 
-  const tileLayers = Object.keys(customLayersControlConfig) as SelectedLayer[];
+  const tileLayers = Object.keys(mapProviderConfig) as SelectedLayer[];
 
   return (
     <div
@@ -28,8 +28,8 @@ export const CustomLayersControl = () => {
                     type="radio"
                     id={provider}
                     name="tileLayer"
-                    defaultChecked={selectedLayer === provider}
-                    onChange={() => setSelectedLayer(provider)}
+                    defaultChecked={selectedMapProvider === provider}
+                    onChange={() => setSelectedMapProvider(provider)}
                   />
                   <label htmlFor={provider}>{provider}</label>
                 </li>

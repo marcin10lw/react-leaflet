@@ -1,16 +1,16 @@
 import { TileLayer } from 'react-leaflet';
 
-import { useSelectedLayerStore } from 'src/store/mapSelectedLayerStore';
+import { useSelectedMapProviderStore } from 'src/store/mapProviderStore';
 
-import { customLayersControlConfig } from '../controls/configs';
+import { mapProviderConfig } from '../controls/configs';
 
 const LayersControlPlugin = () => {
-  const selectedLayer = useSelectedLayerStore((state) => state.selectedLayer);
+  const selectedLayer = useSelectedMapProviderStore((state) => state.selectedMapProvider);
 
   return (
     <TileLayer
-      attribution={customLayersControlConfig[selectedLayer].attribution}
-      url={customLayersControlConfig[selectedLayer].url}
+      attribution={mapProviderConfig[selectedLayer].attribution}
+      url={mapProviderConfig[selectedLayer].url}
     />
   );
 };

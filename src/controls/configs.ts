@@ -1,4 +1,4 @@
-export const customLayersControlConfig = {
+export const mapProviderConfig = {
   ['OSM Streets']: {
     id: 1,
     attribution:
@@ -18,3 +18,4 @@ export const customLayersControlConfig = {
     url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
   },
 };
+
