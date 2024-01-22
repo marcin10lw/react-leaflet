@@ -1,21 +1,18 @@
 import { useEffect } from 'react';
-import { LayerGroup, LayersControl, Marker, useMap } from 'react-leaflet';
+import { Circle, LayerGroup, LayersControl, Marker, useMap } from 'react-leaflet';
 
 // @ts-expect-error: The type definitions for boolean-point-in-polygon are incomplete.
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
+import { cities } from 'src/data/cities';
 import { defaultIcon, selectedIcon } from 'src/icons';
 import { useFilteredCitiesStore } from 'src/store/filteredCitiesStore';
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
-import { CitiesCollection } from 'src/types';
 import { getLatLang } from 'src/utils';
 
 import { CityPopup } from './CityPopup';
 
-interface CitiesMarkerLayerProps {
-  data: CitiesCollection;
-}
-export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
+export const CitiesMarkerLayer = () => {
   const map = useMap();
   const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
   const geoFilter = useGeoFilterStore((state) => state.geoFilter);
@@ -62,8 +59,20 @@ export const CitiesMarkerLayer = ({ data: cities }: CitiesMarkerLayerProps) => {
   });
 
   return (
-    <LayersControl.Overlay name="World Popular Cities">
-      <LayerGroup>{citiesLayer}</LayerGroup>
-    </LayersControl.Overlay>
+    <>
+      <LayersControl.Overlay name="World Popular Cities">
+        <LayerGroup>{citiesLayer}</LayerGroup>
+      </LayersControl.Overlay>
+      {radiusFilter && (
+        <Circle
+          pathOptions={{
+            color: 'red',
+            fillColor: '#f03',
+          }}
+          center={getLatLang(radiusFilter.cityFeature.geometry.coordinates)}
+          radius={radiusFilter.radius * 1000}
+        />
+      )}
+    </>
   );
 };
