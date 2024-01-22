@@ -6,14 +6,14 @@ export type DisplayedLayer = keyof typeof layersConfig;
 
 interface ActiveLayersStore {
   activeLayers: DisplayedLayer[];
-  setActiveLayers: (layer: DisplayedLayer) => void;
+  toggleActiveLayer: (layer: DisplayedLayer) => void;
 }
 
 export const useActiveLayersStore = create(
   persist<ActiveLayersStore>(
     (set) => ({
       activeLayers: [],
-      setActiveLayers: (layer) =>
+      toggleActiveLayer: (layer) =>
         set((store) => {
           const storeActiveLayers = store.activeLayers;
 

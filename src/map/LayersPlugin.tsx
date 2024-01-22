@@ -10,7 +10,7 @@ export const LayersPlugin = () => {
       {layersMap
         .filter((layer) => activeLayers.includes(layer))
         .map((layer) => {
-          const DisplayedLayer = layersConfig[layer].layer;
+          const DisplayedLayer = layersConfig[layer].layerComponent;
 
           return <DisplayedLayer />;
         })}

@@ -4,6 +4,7 @@ import { LeftOutlined } from '@ant-design/icons';
 import { SelectedLayer, useSelectedMapProviderStore } from 'src/store/mapProviderStore';
 import { Button } from 'src/ui/atoms/Button';
 
+import LayersControl from './LayersControl';
 import { mapProviderConfig } from './configs';
 
 export const CustomLayersControl = () => {
@@ -36,6 +37,8 @@ export const CustomLayersControl = () => {
               ))}
             </ul>
           )}
+
+          <LayersControl />
         </div>
       ) : (
         <Button variant="control">

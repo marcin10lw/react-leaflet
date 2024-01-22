@@ -22,15 +22,15 @@ export const mapProviderConfig = {
 
 export const layersConfig = {
   cities: {
-    name: 'World Popular Cities',
-    layer: CitiesMarkerLayer,
+    label: 'World Popular Cities',
+    layerComponent: CitiesMarkerLayer,
   },
   highestPoints: {
-    name: 'Highest Points',
-    layer: HighestPointsLayer,
+    label: 'Highest Points',
+    layerComponent: HighestPointsLayer,
   },
   continents: {
-    name: 'Highest Points',
-    layer: ContinentsLayer,
+    label: 'Continents',
+    layerComponent: ContinentsLayer,
   },
 };
