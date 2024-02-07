@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,29 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model City {
+  id          String @id @default(cuid())
+  name        String
+  adm0name    String
+  latitude    Float
+  longitude   Float
+  pop_max     Int
+  coordinates Json
+}
+
+model HighestPoint {
+  id          String @id @default(cuid())
+  name        String
+  continent   String
+  elevation   Int
+  color       String
+  coordinates Json
+}
+
+model Continent {
+  id          String @id @default(cuid())
+  name        String
+  coordinates Json
 }
