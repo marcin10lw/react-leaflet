@@ -4,8 +4,8 @@ import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { MiniMap } from 'leaflet-control-mini-map';
 
-import { mapProviderConfig } from './controls/configs';
-import { useLayersStore } from './store/layersStore';
+import { mapProviderConfig } from '../controls/configs';
+import { useLayersStore } from '../store/layersStore';
 
 const Minimap = () => {
   const map = useMap();
@@ -24,8 +24,6 @@ const Minimap = () => {
         interactive: true,
         weight: 1,
       },
-      toggleDisplay: true,
-      autoToggleDisplay: true,
     }).addTo(map);
 
     return () => {
