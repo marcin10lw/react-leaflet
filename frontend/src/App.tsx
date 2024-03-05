@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import MinimapControl from './Minimap';
 import { ActiveFilters } from './controls/ActiveFilters';
 import { FitBoundsControl } from './controls/FitBoundsControl';
 import { FitWorldControl } from './controls/FitWorldControl';
@@ -14,6 +15,7 @@ function App() {
   return (
     <main className="relative">
       <Map zoom={zoom}>
+        <MinimapControl />
         <ZoomControlPlugin zoom={zoom || 2} />
         <div className="absolute z-[1000] flex flex-col gap-4 pl-4 pt-4">
           <ZoomControl zoom={zoom} setZoom={setZoom} />

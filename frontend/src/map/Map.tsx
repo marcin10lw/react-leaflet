@@ -11,7 +11,7 @@ interface MapProps {
 export const Map = ({ children, zoom }: MapProps) => {
   return (
     <MapContainer
-      className="absolute z-[100]"
+      className="absolute z-[100] min-h-screen w-full"
       center={[0, 0]}
       zoom={zoom}
       minZoom={2}
