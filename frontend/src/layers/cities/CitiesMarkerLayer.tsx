@@ -39,6 +39,10 @@ export const CitiesMarkerLayer = () => {
 
   useEffect(() => {
     setFilteredCities(filteredCities);
+
+    return () => {
+      setFilteredCities(null);
+    };
   }, [filteredCities, setFilteredCities]);
 
   const citiesLayer = filteredCities.map((city) => {

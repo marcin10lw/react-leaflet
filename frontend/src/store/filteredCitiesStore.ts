@@ -3,7 +3,7 @@ import { create } from 'zustand';
 
 interface FilteredCitiesStore {
   filteredCities: City[] | null;
-  setFilteredCities: (cities: City[]) => void;
+  setFilteredCities: (cities: City[] | null) => void;
 }
 
 export const useFilteredCitiesStore = create<FilteredCitiesStore>((set) => ({

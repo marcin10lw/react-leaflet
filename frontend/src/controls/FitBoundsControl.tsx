@@ -12,10 +12,10 @@ export const FitBoundsControl = () => {
   const radiusFilter = useRadiusFilterStore((state) => state.radiusFilter);
   const geoFilter = useGeoFilterStore((state) => state.geoFilter);
 
-  const filteredCities = useFilteredCitiesStore((state) => state.filteredCities);
   const map = useMap();
+  const filteredCities = useFilteredCitiesStore((state) => state.filteredCities);
 
-  const disabled = !geoFilter && !radiusFilter;
+  const disabled = (!geoFilter && !radiusFilter) || !filteredCities;
 
   const onFitBounds = () => {
     if (disabled) return;
@@ -25,7 +25,12 @@ export const FitBoundsControl = () => {
     ) as LatLngBoundsExpression;
 
     if (filteredCitiesBounds) {
-      map.fitBounds(filteredCitiesBounds);
+      map.flyToBounds(filteredCitiesBounds, {
+        animate: true,
+        duration: 2,
+        easeLinearity: 0.5,
+        maxZoom: 10,
+      });
     }
   };
 

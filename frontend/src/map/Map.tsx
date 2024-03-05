@@ -19,10 +19,10 @@ export const Map = ({ children, zoom }: MapProps) => {
       attributionControl={false}
       zoomControl={false}
       maxBounds={[
-        [90, 180],
-        [90, -180],
-        [-90, -180],
-        [-90, 180],
+        [90, 240],
+        [90, -240],
+        [-90, -240],
+        [-90, 240],
       ]}
     >
       <LayersPlugin />
