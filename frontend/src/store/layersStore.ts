@@ -16,7 +16,7 @@ interface LayersStore {
 export const useLayersStore = create(
   persist<LayersStore>(
     (set) => ({
-      activeLayers: [],
+      activeLayers: ['continents', 'cities'],
       toggleActiveLayer: (layer) =>
         set((store) => {
           const storeActiveLayers = store.activeLayers;
@@ -31,7 +31,7 @@ export const useLayersStore = create(
             activeLayers: [...storeActiveLayers, layer],
           };
         }),
-      selectedMapProvider: 'OSM Streets',
+      selectedMapProvider: 'ESRI World Imagery',
       setSelectedMapProvider: (provider: SelectedLayer) =>
         set({ selectedMapProvider: provider as SelectedLayer }),
     }),
