@@ -1,6 +1,8 @@
 import { useMapEvents } from 'react-leaflet';
 import { useSearchParams } from 'react-router-dom';
 
+import { MAP_CENTER_QUERY_PARAM_KEY, MAP_ZOOM_QUERY_PARAM_KEY } from 'src/constants';
+
 import { debounce } from './helpers';
 
 const CenterPlugin = () => {
@@ -11,8 +13,8 @@ const CenterPlugin = () => {
     const { lat, lng } = event[0].target.getCenter();
     const zoom = event[0].target.getZoom();
 
-    searchParams.set('lat-lng', `${lat}-${lng}`);
-    searchParams.set('zoom', zoom);
+    searchParams.set(MAP_CENTER_QUERY_PARAM_KEY, `${lat}:${lng}`);
+    searchParams.set(MAP_ZOOM_QUERY_PARAM_KEY, zoom);
 
     setSearchParams(searchParams);
   });

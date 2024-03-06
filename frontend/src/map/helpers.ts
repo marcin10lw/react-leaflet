@@ -13,8 +13,8 @@ export const debounce = (cb: (...args: any) => void, delay: number = 1000) => {
 };
 
 export const extractLatLngFromUrl = (centerQuery: string): LatLngExpression => {
-  const lat = Number(centerQuery.split('-')[0]);
-  const lng = Number(centerQuery.split('-')[1]);
+  const lat = Number(centerQuery.split(':')[0]);
+  const lng = Number(centerQuery.split(':')[1]);
 
   return [lat, lng];
 };

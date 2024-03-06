@@ -1,6 +1,8 @@
 import { MapContainer } from 'react-leaflet';
 import { useSearchParams } from 'react-router-dom';
 
+import { MAP_CENTER_QUERY_PARAM_KEY } from 'src/constants';
+
 import CenterPlugin from './CenterPlugin';
 import { LayersPlugin } from './LayersPlugin';
 import { extractLatLngFromUrl } from './helpers';
@@ -14,14 +16,13 @@ interface MapProps {
 export const Map = ({ children, zoom }: MapProps) => {
   const [searchParams] = useSearchParams();
 
-  const centerQuery = searchParams.get('lat-lng');
-  const zoomQuery = searchParams.get('zoom');
+  const centerQuery = searchParams.get(MAP_CENTER_QUERY_PARAM_KEY);
 
   return (
     <MapContainer
       className="absolute z-[100] min-h-screen w-full"
       center={centerQuery ? extractLatLngFromUrl(centerQuery) : [0, 0]}
-      zoom={zoomQuery ? Number(zoomQuery) : zoom}
+      zoom={zoom}
       minZoom={2}
       maxZoom={18}
       attributionControl={false}

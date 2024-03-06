@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
+import { MAP_ZOOM_QUERY_PARAM_KEY } from './constants';
 import { ActiveFilters } from './controls/ActiveFilters';
 import { FitBoundsControl } from './controls/FitBoundsControl';
 import { FitWorldControl } from './controls/FitWorldControl';
@@ -9,7 +11,10 @@ import { Map } from './map/Map';
 import Minimap from './map/Minimap';
 
 function App() {
-  const [zoom, setZoom] = useState(2);
+  const [searchParams] = useSearchParams();
+
+  const zoomQuery = searchParams.get(MAP_ZOOM_QUERY_PARAM_KEY);
+  const [zoom, setZoom] = useState(zoomQuery ? Number(zoomQuery) : 2);
 
   return (
     <main className="relative">
