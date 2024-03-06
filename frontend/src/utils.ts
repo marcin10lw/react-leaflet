@@ -2,6 +2,10 @@ import clsx, { ClassValue } from 'clsx';
 import { LatLngExpression } from 'leaflet';
 import { twMerge } from 'tailwind-merge';
 
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
 export const formatNumber = (number: number | string) => {
   const parsedNumber = Number(number);
 
@@ -11,8 +15,4 @@ export const formatNumber = (number: number | string) => {
 export const getLatLang = (coordinates: number[]) => {
   const [lng, lat] = coordinates;
   return [lat, lng] as LatLngExpression;
-};
-
-export const cn = (...inputs: ClassValue[]) => {
-  return twMerge(clsx(...inputs));
 };
