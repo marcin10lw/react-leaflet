@@ -8,7 +8,6 @@ import { FitWorldControl } from './controls/FitWorldControl';
 import { ZoomControl } from './controls/ZoomControl';
 import { LayersControl } from './controls/layers/LayersControl';
 import { Map } from './map/Map';
-import Minimap from './map/Minimap';
 
 function App() {
   const [searchParams] = useSearchParams();
@@ -19,7 +18,6 @@ function App() {
   return (
     <main className="relative">
       <Map zoom={zoom}>
-        <Minimap />
         <div className="absolute z-[1000] flex flex-col gap-4 pl-4 pt-4">
           <ZoomControl zoom={zoom} setZoom={setZoom} />
         </div>

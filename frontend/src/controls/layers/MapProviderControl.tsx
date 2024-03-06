@@ -1,3 +1,5 @@
+import { Label } from 'src/components/ui/label';
+import { RadioGroup, RadioGroupItem } from 'src/components/ui/radio-group';
 import { SelectedLayer, useLayersStore } from 'src/store/layersStore';
 
 import { mapProviderConfig } from '../configs';
@@ -8,19 +10,23 @@ export const MapProviderControl = () => {
   const tileLayers = Object.keys(mapProviderConfig) as SelectedLayer[];
 
   return (
-    <ul className="flex flex-col gap-1">
+    <RadioGroup
+      className="flex flex-col gap-2"
+      onValueChange={(value) => setSelectedMapProvider(value as SelectedLayer)}
+      defaultValue={selectedMapProvider}
+    >
       {tileLayers.map((provider) => (
-        <li key={provider} className="flex items-center gap-2">
-          <input
-            type="radio"
+        <div key={provider} className="flex items-center gap-2 ">
+          <RadioGroupItem
             id={provider}
-            name="tileLayer"
+            value={provider}
             defaultChecked={selectedMapProvider === provider}
-            onChange={() => setSelectedMapProvider(provider)}
           />
-          <label htmlFor={provider}>{provider}</label>
-        </li>
+          <Label htmlFor={provider} className="text-xs">
+            {provider}
+          </Label>
+        </div>
       ))}
-    </ul>
+    </RadioGroup>
   );
 };

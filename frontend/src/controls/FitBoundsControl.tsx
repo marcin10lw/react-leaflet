@@ -2,10 +2,10 @@ import { useMap } from 'react-leaflet';
 
 import { ShrinkOutlined } from '@ant-design/icons';
 import { LatLngBoundsExpression } from 'leaflet';
+import { Button } from 'src/components/ui/button';
 import { useFilteredCitiesStore } from 'src/store/filteredCitiesStore';
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
-import { Button } from 'src/ui/atoms/Button';
 import { getLatLang } from 'src/utils';
 
 export const FitBoundsControl = () => {
@@ -35,7 +35,7 @@ export const FitBoundsControl = () => {
   };
 
   return (
-    <Button onClick={onFitBounds} variant="control" disabled={disabled}>
+    <Button onClick={onFitBounds} variant="control" size="icon" disabled={disabled}>
       <ShrinkOutlined />
     </Button>
   );

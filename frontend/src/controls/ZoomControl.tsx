@@ -1,5 +1,5 @@
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button } from 'src/ui/atoms/Button';
+import { Button } from 'src/components/ui/button';
 
 interface ZoomControlPorps {
   zoom: number;
@@ -18,10 +18,10 @@ export const ZoomControl = ({ zoom, setZoom }: ZoomControlPorps) => {
 
   return (
     <div className="flex flex-col gap-[2px]">
-      <Button variant="control" onClick={increaseZoom}>
+      <Button variant="control" size="icon" onClick={increaseZoom}>
         <PlusOutlined />
       </Button>
-      <Button variant="control" onClick={decreaseZoom}>
+      <Button variant="control" size="icon" onClick={decreaseZoom}>
         <MinusOutlined />
       </Button>
     </div>

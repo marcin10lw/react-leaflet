@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
 import { LeftOutlined } from '@ant-design/icons';
-import { Button } from 'src/ui/atoms/Button';
+import { Button } from 'src/components/ui/button';
 
 import MainLayersControl from './MainLayersControl';
 import { MapProviderControl } from './MapProviderControl';
 
 export const LayersControl = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div
@@ -16,14 +16,13 @@ export const LayersControl = () => {
       onMouseLeave={() => setIsOpen(false)}
     >
       {isOpen ? (
-        <div className="w-[160px] cursor-auto rounded border-2 border-slate-400 bg-white p-2">
+        <div className="w-[160px] cursor-auto rounded border-2 border-slate-800 bg-secondary p-2">
           <MapProviderControl />
-          <div className="mt-1.5 border-t border-slate-300 pt-1.5">
-            <MainLayersControl />
-          </div>
+          <div className="my-2 h-[1px] bg-slate-800" />
+          <MainLayersControl />
         </div>
       ) : (
-        <Button variant="control">
+        <Button variant="control" size="icon">
           <LeftOutlined />
         </Button>
       )}

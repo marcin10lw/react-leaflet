@@ -1,3 +1,5 @@
+import { Checkbox } from 'src/components/ui/checkbox';
+import { Label } from 'src/components/ui/label';
 import { DisplayedLayer, useLayersStore } from 'src/store/layersStore';
 
 import { layersConfig } from '../configs';
@@ -7,20 +9,21 @@ const MainLayersControl = () => {
   const layersMap = Object.keys(layersConfig) as DisplayedLayer[];
 
   return (
-    <ul className="flex flex-col gap-1">
+    <ul className="flex flex-col gap-2">
       {layersMap.map((layer) => {
         const activeLayer = !!activeLayers.find((activeLayer) => activeLayer === layer);
 
         return (
-          <li key={layer} className="flex items-center gap-1">
-            <input
-              type="checkbox"
+          <div key={layer} className="flex items-center gap-2">
+            <Checkbox
               id={layer}
               checked={activeLayer}
-              onChange={() => toggleActiveLayer(layer)}
+              onCheckedChange={() => toggleActiveLayer(layer)}
             />
-            <label htmlFor={layer}>{layersConfig[layer].label}</label>
-          </li>
+            <Label className="text-xs" htmlFor={layer}>
+              {layersConfig[layer].label}
+            </Label>
+          </div>
         );
       })}
     </ul>

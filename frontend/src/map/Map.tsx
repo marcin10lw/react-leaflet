@@ -5,6 +5,8 @@ import { MAP_CENTER_QUERY_PARAM_KEY } from 'src/constants';
 
 import CenterPlugin from './CenterPlugin';
 import { LayersPlugin } from './LayersPlugin';
+import Minimap from './Minimap';
+import { ZoomControlPlugin } from './ZoomControlPlugin';
 import { extractLatLngFromUrl } from './helpers';
 import './style.css';
 
@@ -34,6 +36,8 @@ export const Map = ({ children, zoom }: MapProps) => {
         [-90, 240],
       ]}
     >
+      <Minimap />
+      <ZoomControlPlugin zoom={zoom || 2} />
       <CenterPlugin />
       <LayersPlugin />
       {children}
