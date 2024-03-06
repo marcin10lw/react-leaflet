@@ -68,8 +68,9 @@ export const CitiesMarkerLayer = () => {
       {radiusFilter && (
         <Circle
           pathOptions={{
-            color: 'red',
-            fillColor: '#f03',
+            color: 'orange',
+            fillColor: '#ffbb00',
+            opacity: 0.8,
           }}
           center={getLatLang(radiusFilter.cityFeature.geometry.coordinates)}
           radius={radiusFilter.radius * 1000}

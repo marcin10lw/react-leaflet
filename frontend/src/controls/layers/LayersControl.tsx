@@ -7,7 +7,7 @@ import MainLayersControl from './MainLayersControl';
 import { MapProviderControl } from './MapProviderControl';
 
 export const LayersControl = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div

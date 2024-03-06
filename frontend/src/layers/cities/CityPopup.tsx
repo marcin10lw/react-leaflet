@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Popup } from 'react-leaflet';
 
 import { CloseOutlined, FilterOutlined } from '@ant-design/icons';
+import { Button } from 'src/components/ui/button';
 import { INITIAL_RADIUS_FILTER } from 'src/constants';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { City } from 'src/types';
-import { Button } from 'src/ui/atoms/Button';
 import { Card } from 'src/ui/atoms/Card';
 import { formatNumber } from 'src/utils';
 
@@ -51,12 +51,7 @@ export const CityPopup = ({ city, isSameSelectedCity }: CityPopupProps) => {
           type="number"
           min={0}
         />
-        <Button
-          variant="primary"
-          className="gap-2"
-          onClick={onFilterButtonClick}
-          disabled={radiusInput === 0}
-        >
+        <Button className="gap-2" onClick={onFilterButtonClick} disabled={radiusInput === 0}>
           {isFiltering ? <CloseOutlined /> : <FilterOutlined />}
           {isFiltering ? 'Clear filter' : 'Filter by km'}
         </Button>

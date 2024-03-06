@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { CloseOutlined, UpOutlined } from '@ant-design/icons';
+import { Button } from 'src/components/ui/button';
 import { useGeoFilterStore } from 'src/store/geoFilterStore';
 import { useRadiusFilterStore } from 'src/store/radiusFilterStore';
 import { cn } from 'src/utils';
@@ -48,12 +49,14 @@ export const ActiveFilters = () => {
         'translate-y-full': isOpen,
       })}
     >
-      <section className="relative rounded-md border-2 border-slate-300 bg-white px-6 py-4 shadow-xl">
-        <button
+      <section className="relative rounded-md border-2 border-slate-800 bg-secondary px-6 py-4 shadow-xl">
+        <Button
+          variant="control"
           onClick={() => setIsOpen((isOpen) => !isOpen)}
-          className="absolute bottom-[calc(100%_+_16px)] left-0 rounded-md border-2 border-slate-300 bg-white px-2 py-1"
+          size="sm"
+          className="absolute bottom-[calc(100%_+_16px)] left-0 p-2 text-xs"
         >
-          <div className="flex items-center gap-1 font-semibold uppercase text-slate-600">
+          <div className="flex items-center gap-1.5 font-semibold uppercase text-slate-600">
             <span
               className={cn('flex', {
                 'rotate-180': !isOpen,
@@ -66,7 +69,7 @@ export const ActiveFilters = () => {
               {activeFiltersList.length > 0 && ` (${activeFiltersList.length})`}
             </span>
           </div>
-        </button>
+        </Button>
         <h2 className="text-lg font-bold text-slate-800">Active Filters</h2>
         <div>
           {activeFiltersList.length > 0 ? (
